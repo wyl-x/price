@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="vue.min.js"></script>
+  <style>
+    input {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+    div {
+        font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <input type="text" placeholder="g" v-model="amount">g <br>
+
+  <input type="text" placeholder="件" v-model="total">件<br>
+
+  <input type="text" placeholder="￥" v-model="money">元<br>
+  <div>{{price.toFixed(2)}} 元/斤</div>
+</div>
+<script>
+  vm = new Vue({
+    el: '#app',
+    data() {
+      return {
+        amount: 50,
+        total: 1,
+        money: 2.7
+      }
+    },
+
+    computed: {
+      price() {
+        return this.money/(this.amount * this.total / 500)
+      }
+    }
+  })
+</script>
+</body>
+</html>
